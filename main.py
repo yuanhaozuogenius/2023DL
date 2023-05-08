@@ -14,7 +14,7 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
     sample_data, df_labels = tSNE.tSNE.load_data()
-    tSNE.tSNE.origin_plot(sample_data, df_labels)
+    tSNE.tSNE.tSNE_method(sample_data, df_labels)
     # tSNE.PCA.PCA_method(sample_data, df_labels)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

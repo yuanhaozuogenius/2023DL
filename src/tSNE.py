@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from sklearn import decomposition
+from sklearn import decomposition, manifold
 from sklearn.preprocessing import StandardScaler
 
 
@@ -21,6 +21,7 @@ class tSNE:
         plt.title("load_data points")
         plt.show()  # 显示图像
         plt.clf()  # 清除图像
+        plt.close()  # 关闭图像
 
         df_data = df_data.head(1000)
         df_labels = df_labels.head(1000)
@@ -51,6 +52,32 @@ class tSNE:
         print(type(data), data.head(10))
         # creating a new data frame for plotting of data points
         plt.scatter(data)
+        plt.show()
+        plt.clf()
+        plt.close()
+
+    # Implementation of tSNE
+    def tSNE_method(data, label):
+        print("*****tSNE_method start******")
+        tsne = manifold.TSNE(n_components=2, random_state=42, verbose=2, n_iter=2000)
+        '''KL散度（Kullback-Leibler Divergence），也称为相对熵（Relative Entropy），是用于比较两个概率分布差异的一种方法。
+        在t-SNE算法中，KL散度被用来衡量原始高维空间中数据点之间的相似度和降维后低维空间中数据点之间的相似度之间的差异。
+        t-SNE的目标就是使得低维空间中的相似度尽可能地符合高维空间中的相似度'''
+        transformed_data = tsne.fit_transform(data)
+        print(transformed_data.shape)
+        print(data.shape)
+        # Creation of new dataframe for plotting of data points
+        tsne_df = pd.DataFrame(
+            np.column_stack((transformed_data, label)), columns=['x', 'y', 'labels'])
+        # 将tsne_df中labels列的数据类型转换为整型，并将结果分配回tsne_df中的labels列
+        tsne_df.loc[:, 'labels'] = tsne_df.labels.astype(int)
+        print(tsne_df.head(10))
+
+        grid = sns.FacetGrid(tsne_df, hue='labels', height=8)
+        # 使用map函数绘制散点图，并将其传递给plt.scatter，这将在grid上绘制多个子图，每个子图代表一个标签。
+        # 最后，使用add_legend函数添加一个图例，以显示每个类别的颜色。
+        grid.map(plt.scatter, 'x', 'y').add_legend()
+        plt.title("tSNE:plot tSNE_data points")
         plt.show()
 
 
