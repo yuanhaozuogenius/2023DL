@@ -42,13 +42,13 @@ Kaggle Simple MNIST NN from scratch (numpy, no TF/Keras)
        通过训练后的模型准确率达到86%
 11. **数学推导**：
 
-![AI draft-1](imgs\AI draft-1.jpg)
+![AIDraft-1](imgs\AIDraft-1.jpg)
 
-![AI draft-2](imgs\AI draft-2.jpg)
+![AIDraft-2](imgs\AIDraft-2.jpg)
 
-![AI draft-3](imgs\AI draft-3.jpg)
+![AIDraft-3](imgs\AIDraft-3.jpg)
 
-![AI draft-4](imgs\AI draft-4.jpg)
+![AIDraft-4](imgs\AIDraft-4.jpg)
 
-![AI draft-5](imgs\AI draft-5.jpg)
+![AIDraft-5](imgs\AIDraft-5.jpg)
 
